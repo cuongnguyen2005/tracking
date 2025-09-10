@@ -1,0 +1,139 @@
+body {
+    margin: 0 auto;
+    background-color: #333;
+    font-size: 16px;
+    font-family: 'Inter', 'Roboto', 'Segoe UI', sans-serif;
+}
+
+button {
+    width: 100%;
+    border: none;
+    border-radius: 7px;
+    font-size: 16px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    filter: brightness(130%);
+}
+
+.page {
+    width: 100%;
+    min-height: 100vh;
+    max-width: 1280px;
+    background-color: #F5F6FA;
+    margin: 0 auto;
+}
+
+/*** page-up ***/
+/* info */
+.page-up {
+    display: flex;
+    justify-content: space-between;
+    padding: 50px 100px;
+}
+
+.page-up .page-up-btn {
+    width: 280px;
+    height: 280px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 7px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.page-up .info {
+    background-color: #1E3A8A;
+    color: #fff;
+}
+
+.page-up .info .info-content {
+    display: flex;
+    gap: 20px;
+}
+
+.page-up .info .info-content .info-right {
+    display: flex;
+    flex-direction: column;
+}
+
+.page-up .info .info-content .info-right span {
+    padding: 5px 0;
+}
+
+.page-up .info .info-content .info-right span:nth-child(2),
+.page-up .info .info-content .info-right span:nth-child(3) {
+    font-size: 20px;
+    color: #f7c443;
+}
+
+.page-up .info .info-content .info-left img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.page-up .info .tracking-btn button {
+    padding: 20px;
+    background-color: #7ec3ff;
+    margin-top: 10px;
+}
+
+.page-up .info .tracking-btn .tracking-btn-up {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.page-up .info .tracking-btn .tracking-btn-up button {
+    padding: 10px;
+    background-color: #fff;
+}
+
+/* 打卡时间 */
+.page-up .tracking {
+
+    background-color: #fff;
+}
+
+.page-up .tracking-up {
+    display: flex;
+    flex-direction: column;
+}
+
+.page-up .tracking .tracking-up hr {
+    width: 100%;
+}
+
+.page-up .tracking button {
+    padding: 10px 0;
+    background-color: #2563EB;
+}
+
+.page-up .tracking .tracking-up .tracking-title {
+    font-size: 20px;
+    font-weight: 900;
+    padding: 5px 0;
+}
+
+.page-up .tracking .tracking-up .tracking-note .time-line {
+    display: flex;
+    justify-content: space-between;
+    padding: 7px 0;
+}
+
+.page-down {
+    padding: 0 100px 50px 100px;
+}
+
+.page-down-title {
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 10px 0;
+}
