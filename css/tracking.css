@@ -8,6 +8,7 @@ td,
 th {
     border: 1px solid #ddd;
     padding: 8px;
+    text-align: center;
 }
 
 tr {
@@ -21,7 +22,7 @@ tr:hover {
 th {
     padding-top: 12px;
     padding-bottom: 12px;
-    text-align: left;
+    text-align: center;
     background-color: #2563EB;
     color: white;
 }

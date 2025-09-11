@@ -131,6 +131,14 @@ button:hover {
     padding: 0 100px 50px 100px;
 }
 
+.page-down .page-down-content {
+    display: none;
+}
+
+.page-down .active {
+    display: block;
+}
+
 .page-down-title {
     text-align: center;
     font-weight: bold;

@@ -1,20 +1,3 @@
-<?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-include 'api/attendance.php';
-include 'api/employee.php';
-
-$empCode = "000001";
-$employee = getEmployeeInfo($empCode)->fetch_assoc();
-$todayAttendance = getTodayAttendance('000001');
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['checkin'])) {
-    if (addAttendance($empCode)) {
-        header("Location: " . $_SERVER['PHP_SELF']);
-        exit;
-    }
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,19 +19,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['checkin'])) {
                     <div class="info-left">
                         <span><img src="images/hinh-anh-mat-troi-18.jpg" alt=""></span>
                     </div>
-                    <div class="info-right">
-                        <span><?= htmlspecialchars($employee['emp_name']) ?> - <?= $employee['emp_code'] ?></span>
-                        <span><?= $employee['dept_code'] ?></span>
-                        <span><?= $employee['dept_name'] ?></span>
-                    </div>
+                    <div class="info-right" id="employee-info"></div>
                 </div>
                 <div class="tracking-btn">
                     <hr>
                     <div class="tracking-btn-up">
-                        <button style="color: #FF8A65;">薪资查询</button>
+                        <button class="salary-btn" style="color: #FF8A65;">薪资查询</button>
                         <button style="color: #2563EB;">我的任务</button>
                     </div>
-                    <form method="POST"><button type="submit" name="checkin">线上打卡</button></form>
+                    <button type="button" name="checkin" onclick="checkIn()">线上打卡</button>
                 </div>
             </div>
             <!--打卡时间-->
@@ -56,16 +35,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['checkin'])) {
                 <div class="tracking-up">
                     <span class="tracking-title">考勤打卡</span>
                     <hr>
-                    <div class="tracking-note">
+                    <div class="tracking-note" id="time-line">
                         <span style="color: #2563EB;">排班时间 (09:00-18:00)</span>
-                        <?php if ($todayAttendance && $todayAttendance->num_rows > 0): ?>
-                            <?php while ($row = $todayAttendance->fetch_assoc()): ?>
-                                <div class="time-line">
-                                    <span class="date"><?= htmlspecialchars($row['day']) ?></span>
-                                    <span class="hour"><?= htmlspecialchars($row['time']) ?></span>
-                                </div>
-                            <?php endwhile; ?>
-                        <?php endif; ?>
                     </div>
                 </div>
                 <div><button class="tracking-page">本月出勤纪录</button></div>
@@ -83,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['checkin'])) {
 
                         <div class="time-line">
                             <span class="date">年假 2025</span>
-                            <span class="hour"><?= $employee['leave_days'] ?> 日</span>
+                            <span class="hour">15 日</span>
                         </div>
                     </div>
                 </div>
@@ -94,12 +65,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['checkin'])) {
             <hr>
         </div>
         <div class="page-down" id="page-down">
-
+            <div class="page-down-content">
+                <div class="page-down-title">薪资查询</div>
+                <table id="table-salary"></table>
+            </div>
+            <div class="page-down-content active">
+                <div class="page-down-title">本月出勤纪录</div>
+                <table id="table-attendance"></table>
+            </div>
+            <div class="page-down-content">
+                <div class="page-down-title">请假纪录</div>
+                <div id="calendar"></div>
+            </div>
         </div>
+
     </div>
 
     <!--js-->
     <script src="js/page_load.js"></script>
+    <script src="js/main.js"></script>
+
 </body>
 
 </html>
