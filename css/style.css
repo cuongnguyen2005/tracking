@@ -1,5 +1,5 @@
 body {
-    margin: 0 auto;
+    margin: 0;
     background-color: #333;
     font-size: 16px;
     font-family: 'Inter', 'Roboto', 'Segoe UI', sans-serif;
@@ -20,6 +20,7 @@ button:hover {
 }
 
 .page {
+    position: relative;
     width: 100%;
     min-height: 100vh;
     max-width: 1280px;
@@ -32,7 +33,7 @@ button:hover {
 .page-up {
     display: flex;
     justify-content: space-between;
-    padding: 50px 100px;
+    padding: 70px 100px 50px 100px;
 }
 
 .page-up .page-up-btn {
@@ -135,13 +136,44 @@ button:hover {
     display: none;
 }
 
-.page-down .active {
+.page-down .page-down-content.active {
     display: block;
+    border-radius: 5px;
+    background-color: #efefef;
+    padding: 20px;
+    margin-top: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .page-down-title {
     text-align: center;
     font-weight: bold;
     font-size: 20px;
-    padding: 10px 0;
+    padding-bottom: 10px;
+}
+
+.page-down-content .leave-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
+}
+
+.leave-left {
+    flex: 4;
+}
+
+.leave-right {
+    flex: 6;
+}
+
+
+#logoutBtn {
+    position: absolute;
+    width: auto;
+    right: 15px;
+    top: 15px;
+    padding: 10px;
+    background: #2563EB;
+    align-items: flex-end;
 }

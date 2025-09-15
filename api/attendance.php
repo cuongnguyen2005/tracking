@@ -19,20 +19,20 @@ if ($method === 'GET') {
 
     // 1. Lấy toàn bộ danh sách chấm công
     if ($action === 'all') {
-        $sql = "SELECT DATE(check_time) AS day, TIME(check_time) AS time, status
+        $sql = "SELECT DATE(check_date) AS day, TIME(check_time) AS time, status
                 FROM attendance
                 WHERE emp_code = ?
-                ORDER BY check_time DESC
+                ORDER BY check_date DESC, check_time DESC
                 LIMIT 100";
     }
 
     // 2. Lấy chấm công hôm nay
     elseif ($action === 'today') {
-        $sql = "SELECT DATE(check_time) AS day, TIME(check_time) AS time, status
+        $sql = "SELECT DATE(check_date) AS day, TIME(check_time) AS time, status
                 FROM attendance
                 WHERE emp_code = ?
-                AND DATE(check_time) = CURDATE()
-                ORDER BY check_time DESC
+                AND DATE(check_date) = CURDATE()
+                ORDER BY check_date DESC, check_time DESC
                 LIMIT 4";
     }
 
@@ -89,7 +89,7 @@ elseif ($method === 'POST') {
     $status = $result_check->num_rows === 0 ? 1 : 2;
 
     // Thực hiện truy vấn chèn dữ liệu
-    $sql = "INSERT INTO attendance (emp_code, check_date, check_time, status) VALUES (?, NOW(), NOW(), ?)";
+    $sql = "INSERT INTO attendance (emp_code, check_date, check_time, status) VALUES (?, CURDATE(), NOW(), ?)";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("si", $empCode, $status);
 

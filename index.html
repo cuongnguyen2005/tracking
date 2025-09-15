@@ -7,11 +7,15 @@
     <title>Tracking</title>
     <!--css-->
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/tracking.css">
+    <link rel="stylesheet" href="css/table.css">
+    <link rel="stylesheet" href="css/calendar.css">
+    <link rel="stylesheet" href="css/form.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
     <div class="page">
+        <button id="logoutBtn"><i class="fa fa-sign-out"></i> 退出</button>
         <div class="page-up">
             <!--info-->
             <div class="page-up-btn info">
@@ -27,7 +31,7 @@
                         <button class="salary-btn" style="color: #FF8A65;">薪资查询</button>
                         <button style="color: #2563EB;">我的任务</button>
                     </div>
-                    <button type="button" name="checkin" onclick="checkIn()">线上打卡</button>
+                    <button type="button" name="checkin" onclick="checkIn()"><i class="fa fa-clock-o"></i> 线上打卡</button>
                 </div>
             </div>
             <!--打卡时间-->
@@ -46,17 +50,7 @@
                 <div class="tracking-up">
                     <span class="tracking-title">今年假别额度</span>
                     <hr>
-                    <div class="tracking-note">
-                        <div class="time-line">
-                            <span class="date">年假 2024</span>
-                            <span class="hour">15 日</span>
-                        </div>
-
-                        <div class="time-line">
-                            <span class="date">年假 2025</span>
-                            <span class="hour">15 日</span>
-                        </div>
-                    </div>
+                    <div class="tracking-note" id="leave-note"></div>
                 </div>
                 <div><button class="request-leave">请假纪录</button></div>
             </div>
@@ -75,7 +69,37 @@
             </div>
             <div class="page-down-content">
                 <div class="page-down-title">请假纪录</div>
-                <div id="calendar"></div>
+                <div class="leave-content">
+                    <div class="leave-left">
+                        <form action="/action_page.php">
+                            <!-- Leave Type -->
+                            <label for="leave-type">请假类型</label>
+                            <select id="leave-type" name="leave-type">
+                                <option value="annual">年假</option>
+                                <option value="sick">病假</option>
+                            </select>
+
+                            <!-- Leave Duration -->
+                            <label for="leave-duration">请假时长</label>
+                            <select id="leave-duration" name="leave-duration">
+                                <option value="day">1天</option>
+                                <option value="half">半天</option>
+                            </select>
+
+                            <input type="submit" value="提交">
+                        </form>
+                    </div>
+                    <div class="leave-right">
+                        <select id="year-select">
+
+                        </select>
+                        <select id="month-select">
+
+                        </select>
+                        <div id="calendar"></div>
+                    </div>
+                </div>
+
             </div>
         </div>
 
@@ -84,7 +108,7 @@
     <!--js-->
     <script src="js/page_load.js"></script>
     <script src="js/main.js"></script>
-
+    <script src="js/log_out.js"></script>
 </body>
 
 </html>

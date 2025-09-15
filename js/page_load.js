@@ -1,3 +1,18 @@
+fetch('api/check_auth.php', {
+    credentials: 'include'
+})
+    .then(r => r.json())
+    .then(data => {
+        if (!data.logged) {
+            window.location.href = 'pages/login.html';
+        } else {
+            window.empCode = data.emp_code;
+            loadEmployeeInfo();
+            loadAttendance();
+            loadCurrentAttendance();
+        }
+    });
+
 function showContent(contentType) {
     const pageDownContentItems = document.querySelectorAll('.page-down-content');
 
@@ -22,6 +37,7 @@ function showContent(contentType) {
 
         case 'leave':
             activeContent = document.querySelector('.page-down-content:nth-child(3)');
+            loadYearMonthOptions();
             break;
 
         default:
@@ -54,23 +70,5 @@ window.addEventListener("DOMContentLoaded", () => {
     loadAttendance();
     loadCurrentAttendance();
     loadEmployeeInfo();
+    loadLeaveday();
 });
-
-// document.addEventListener('DOMContentLoaded', function () {
-//     const buttons = document.querySelectorAll('.click-btn');
-//     const contents = document.querySelectorAll('.page-down-content')
-
-//     buttons.forEach((button, idx) => {
-//         button.addEventListener('click', () => {
-//             contents.forEach(content => content.classList.remove('active'));
-//             contents[idx].classList.add('active');
-
-//             if (idx === 0) {
-//                 loadEmployeeDetail();
-//             } else if (idx === 1) {
-//                 loadAttendance();
-//                 loadCurrentAttendance();
-//             }
-//         })
-//     })
-// });

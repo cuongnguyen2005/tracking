@@ -1,0 +1,49 @@
+/* Calendar basic styles */
+.calendar-header {
+    font-weight: 600;
+    margin: 8px 0;
+    text-align: center;
+}
+
+.calendar-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.calendar-table th,
+.calendar-table td {
+    border: 1px solid #e5e7eb;
+    padding: 8px;
+    text-align: left;
+    vertical-align: top;
+}
+
+.cal-cell {
+    position: relative;
+    min-height: 60px;
+}
+
+.cal-day {
+    font-weight: 600;
+    color: #374151;
+}
+
+.cal-badge {
+    position: absolute;
+    right: 6px;
+    bottom: 6px;
+    display: inline-block;
+    padding: 2px 6px;
+    border-radius: 9999px;
+    font-size: 12px;
+}
+
+.cal-badge-green {
+    background: #10b981b0;
+    color: white;
+}
+
+.cal-badge-red {
+    background: #EF4444;
+    color: white;
+}
